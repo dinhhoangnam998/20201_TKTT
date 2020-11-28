@@ -1,6 +1,8 @@
 import { Box, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setResponse } from "./redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,10 +19,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar(props) {
   const cls = useStyles();
-
   const [text, setText] = useState("");
+  const dp = useDispatch();
 
-  function hdSearchClick(e) {}
+  async function hdSearchClick(e) {
+    const res = await fetch(`${process.env.REACT_APP_SERVER_URL}?q=${text}`);
+    const body = await res.json();
+    if (!res.ok) {
+      alert(JSON.stringify(body));
+    } else {
+      dp(setResponse(body.response.docs));
+    }
+  }
 
   return (
     <div>

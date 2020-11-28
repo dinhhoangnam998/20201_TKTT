@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Box, makeStyles, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import ResultItem from "./ResultItem";
 
@@ -16,6 +16,9 @@ export default function ResultList(props) {
 
   return (
     <div className={cls.root}>
+      <Box p={2}>
+        <Typography>Tìm thấy x kết quả trong ... giây.</Typography>
+      </Box>
       {results.map((result) => (
         <ResultItem result={result}></ResultItem>
       ))}
