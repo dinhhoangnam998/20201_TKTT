@@ -28,7 +28,8 @@ export default function SearchBar(props) {
     if (!res.ok) {
       alert(JSON.stringify(body));
     } else {
-      dp(setResponse(body.response.docs));
+      let payload = { QTime: body.responseHeader.QTime, results: body.response.docs };
+      dp(setResponse(payload));
     }
   }
 
