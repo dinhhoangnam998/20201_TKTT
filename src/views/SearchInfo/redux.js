@@ -2,13 +2,13 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const searchResultSlice = createSlice({
   name: "searchResultSlice",
-  initialState: { results: [] },
+  initialState: { results: [], numDocs: 0, qTime: 0 },
   reducers: {
-    setResults: (state, action) => {
-      state.results = action.payload;
+    setResponse: (state, action) => {
+      state.results = action.payload.docs;
     },
   },
 });
 
 export default searchResultSlice.reducer;
-export const { setResults } = searchResultSlice.actions;
+export const { setResponse } = searchResultSlice.actions;
