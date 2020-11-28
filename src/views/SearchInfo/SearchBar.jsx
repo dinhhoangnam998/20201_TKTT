@@ -1,5 +1,6 @@
 import { Box, IconButton, makeStyles, TextField, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setResponse } from "./redux";
@@ -21,15 +22,20 @@ export default function SearchBar(props) {
   const cls = useStyles();
   const [text, setText] = useState("");
   const dp = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   async function hdSearchClick(e) {
-    const res = await fetch(`${process.env.REACT_APP_SERVER_URL}?q=${text}`);
-    const body = await res.json();
-    if (!res.ok) {
-      alert(JSON.stringify(body));
+    if (text !== "") {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}?q=${text}`);
+      const body = await res.json();
+      if (!res.ok) {
+        alert(JSON.stringify(body));
+      } else {
+        let payload = { QTime: body.responseHeader.QTime, results: body.response.docs, showResHeader: true };
+        dp(setResponse(payload));
+      }
     } else {
-      let payload = { QTime: body.responseHeader.QTime, results: body.response.docs };
-      dp(setResponse(payload));
+      enqueueSnackbar("Hãy nhập từ khóa để bắt đầu tìm kiếm", { variant: "info", anchorOrigin: { vertical: "bottom", horizontal: "center" } });
     }
   }
 

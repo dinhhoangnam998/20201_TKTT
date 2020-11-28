@@ -2,10 +2,12 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const searchResultSlice = createSlice({
   name: "searchResultSlice",
-  initialState: { results: [], numDocs: 0, qTime: 0 },
+  initialState: { results: [], QTime: 0, showResHeader: false },
   reducers: {
     setResponse: (state, action) => {
-      state.results = action.payload.docs;
+      state.results = action.payload.results;
+      state.QTime = action.payload.QTime;
+      state.showResHeader = action.payload.showResHeader;
     },
   },
 });

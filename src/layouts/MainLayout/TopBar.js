@@ -17,11 +17,9 @@ const TopBar = ({ className, ...rest }) => {
 
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
-      <Toolbar className={classes.toolbar}>
-        <RouterLink to="/">
+      <Toolbar className={classes.toolbar}>{/* <RouterLink to="/">
           <Logo />
-        </RouterLink>
-      </Toolbar>
+        </RouterLink> */}</Toolbar>
     </AppBar>
   );
 };
