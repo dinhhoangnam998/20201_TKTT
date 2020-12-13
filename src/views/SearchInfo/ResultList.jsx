@@ -1,5 +1,4 @@
-import { makeStyles, Typography } from "@material-ui/core";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { makeStyles } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import ResultItem from "./ResultItem";
 
@@ -20,17 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export default function ResultList(props) {
   const cls = useStyles();
   const results = useSelector((state) => state.searchResultSlice.results);
-  const QTime = useSelector((state) => state.searchResultSlice.QTime);
-  const show = useSelector((state) => state.searchResultSlice.showResHeader);
   return (
     <div className={cls.root}>
-      {show && (
-        <Alert severity="info">
-          <AlertTitle>
-            Tìm thấy {results.length} kết quả trong {QTime}ms.
-          </AlertTitle>
-        </Alert>
-      )}
       {results.map((result) => (
         <ResultItem result={result}></ResultItem>
       ))}

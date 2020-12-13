@@ -1,8 +1,8 @@
-import SearchBar from "./SearchBar";
 import View from "../../utils/View";
-import ResultItem from "./ResultItem";
-import ResultList from "./ResultList";
 import AdvanceSearchBox from "./AdvanceSearchBox";
+import ResultList from "./ResultList";
+import SearchBar from "./SearchBar";
+import SearchResultMetaInfo from "./SearchResultMetaInfo";
 
 export default function SearchInfo(props) {
   return (
@@ -10,6 +10,7 @@ export default function SearchInfo(props) {
       <View title="Tìm kiếm thông tin">
         <SearchBar></SearchBar>
         <AdvanceSearchBox></AdvanceSearchBox>
+        <SearchResultMetaInfo></SearchResultMetaInfo>
         <ResultList></ResultList>
       </View>
     </div>
