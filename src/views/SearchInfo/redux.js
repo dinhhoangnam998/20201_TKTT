@@ -2,12 +2,14 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const searchResultSlice = createSlice({
   name: "searchResultSlice",
-  initialState: { results: [], QTime: 0, showResHeader: false },
+  initialState: { results: [], highlighting: null, QTime: 0, showSearchResultMetaBar: false },
   reducers: {
     setResponse: (state, action) => {
-      state.results = action.payload.results;
-      state.QTime = action.payload.QTime;
-      state.showResHeader = action.payload.showResHeader;
+      const body = action.payload;
+      state.QTime = body.responseHeader.QTime;
+      state.results = body.response.docs;
+      state.highlighting = body.highlighting;
+      state.showSearchResultMetaBar = true;
     },
   },
 });

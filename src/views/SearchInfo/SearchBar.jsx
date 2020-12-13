@@ -26,13 +26,13 @@ export default function SearchBar(props) {
 
   async function hdSearchClick(e) {
     if (text !== "") {
-      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}?q=${text}`);
+      const queryString = `q=${text}&hl=true&hl.fl=content&hl.fragsize=50`;
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}?${queryString}`);
       const body = await res.json();
       if (!res.ok) {
         alert(JSON.stringify(body));
       } else {
-        let payload = { QTime: body.responseHeader.QTime, results: body.response.docs, showResHeader: true };
-        dp(setResponse(payload));
+        dp(setResponse(body));
       }
     } else {
       enqueueSnackbar("Hãy nhập từ khóa để bắt đầu tìm kiếm", { variant: "info", anchorOrigin: { vertical: "bottom", horizontal: "center" } });

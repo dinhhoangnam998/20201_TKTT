@@ -1,8 +1,8 @@
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { useSelector } from "react-redux";
 
-export default function SearchResultMetaInfo(props) {
-  const show = useSelector((state) => state.searchResultSlice.showResHeader);
+export default function SearchResultMetaBar(props) {
+  const show = useSelector((state) => state.searchResultSlice.showSearchResultMetaBar);
   const numDoc = useSelector((state) => state.searchResultSlice.results.length);
   const QTime = useSelector((state) => state.searchResultSlice.QTime);
   return (

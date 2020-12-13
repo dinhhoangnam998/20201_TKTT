@@ -21,8 +21,8 @@ export default function ResultList(props) {
   const results = useSelector((state) => state.searchResultSlice.results);
   return (
     <div className={cls.root}>
-      {results.map((result) => (
-        <ResultItem result={result}></ResultItem>
+      {results.map((result, index) => (
+        <ResultItem key={index} result={result} index={index + 1}></ResultItem>
       ))}
     </div>
   );
