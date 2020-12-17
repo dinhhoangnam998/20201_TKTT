@@ -13,9 +13,14 @@ const user = {
 
 const items = [
   {
-    href: "/app/tim-kiem-thong-tin",
+    href: "/20201-tktt/vtv-news",
     icon: SearchIcon,
-    title: "Tìm kiếm thông tin",
+    title: "Tin tức tổng hợp",
+  },
+  {
+    href: "/20201-tktt/covid-news",
+    icon: SearchIcon,
+    title: "Tin tức Covid",
   },
 ];
 
