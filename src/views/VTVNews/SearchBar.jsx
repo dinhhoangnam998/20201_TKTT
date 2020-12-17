@@ -26,7 +26,7 @@ export default function SearchBar(props) {
 
   async function hdSearchClick(e) {
     if (text !== "") {
-      const queryString = `q=${text}&hl=true&hl.fl=content&hl.fragsize=100`;
+      const queryString = `q=${text}&hl=true&hl.fl=paragraphs`;
       const res = await fetch(`http://localhost:8983/solr/vtv_news/select?${queryString}`);
       const body = await res.json();
       if (!res.ok) {

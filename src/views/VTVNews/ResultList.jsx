@@ -7,9 +7,6 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(2, 0),
     },
-    // "& .MuiAlert-root": {
-    //   padding: theme.spacing(2, 1),
-    // },
     "& .MuiTypography-gutterBottom": {
       marginBottom: 0,
     },
@@ -18,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ResultList(props) {
   const cls = useStyles();
-  const results = useSelector((state) => state.searchResultSlice.results);
+  const results = useSelector((state) => state.vtvNewsSlice.results);
   return (
     <div className={cls.root}>
       {results.map((result, index) => (

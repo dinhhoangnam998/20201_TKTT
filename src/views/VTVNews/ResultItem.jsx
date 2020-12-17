@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 export default function ResultItem({ result, index }) {
-  const highlighting = useSelector((state) => state.searchResultSlice.highlighting);
+  const highlighting = useSelector((state) => state.vtvNewsSlice.highlighting);
   const fragment = highlighting[result.id]["content"][0];
   const key = fragment.replaceAll("<em>", "").replaceAll("</em>", "");
   const hightlightedFragment = `<span class="hieghtlightFragment">${fragment}</span>`;
