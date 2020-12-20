@@ -113,7 +113,7 @@ export default function SearchBar(props) {
                   <ListItemIcon>
                     <SearchIcon></SearchIcon>
                   </ListItemIcon>
-                  <ListItemText>{wordSuggestions[0].term}</ListItemText>
+                  <ListItemText>{wordSuggestions[0].term.replaceAll("", " ")}</ListItemText>
                 </ListItem>
               )}
               {wordSuggestions?.length >= 2 && (
@@ -121,7 +121,7 @@ export default function SearchBar(props) {
                   <ListItemIcon>
                     <SearchIcon></SearchIcon>
                   </ListItemIcon>
-                  <ListItemText>{wordSuggestions[1].term}</ListItemText>
+                  <ListItemText>{wordSuggestions[1].term.replaceAll("", " ")}</ListItemText>
                 </ListItem>
               )}
               {correctSpellingSuggestions.length >= 1 && (
