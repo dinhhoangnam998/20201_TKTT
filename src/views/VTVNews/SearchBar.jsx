@@ -2,6 +2,7 @@ import {
   Box,
   ClickAwayListener,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -19,6 +20,7 @@ import { useSnackbar } from "notistack";
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCorrectSpelling, setResponse, setSuggestFragment, setSuggestWord } from "./redux";
+import CallMadeIcon from "@material-ui/icons/CallMade";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -167,10 +169,12 @@ export default function SearchBar(props) {
                 {fragmentSuggestions?.map((item, index) => (
                   <ListItem key={index}>
                     <ListItemIcon>
-                      <SearchIcon></SearchIcon>
+                      <CallMadeIcon></CallMadeIcon>
                     </ListItemIcon>
                     <ListItemText>
-                      <Typography dangerouslySetInnerHTML={{ __html: item.term }}></Typography>
+                      <Typography>
+                        <Link href={item.payload} target="_blank" dangerouslySetInnerHTML={{ __html: item.term }}></Link>
+                      </Typography>
                     </ListItemText>
                   </ListItem>
                 ))}
