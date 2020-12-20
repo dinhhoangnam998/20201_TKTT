@@ -17,7 +17,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import { useSnackbar } from "notistack";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCorrectSpelling, setResponse, setSuggestFragment, setSuggestWord } from "./redux";
 import CallMadeIcon from "@material-ui/icons/CallMade";
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchBar(props) {
   const cls = useStyles();
   const [text, setText] = useState("");
+  const inputRef = useRef();
   const [anchorEl, setAnchorEl] = useState(null);
   const wordSuggestions = useSelector((state) => state.vtvNewsSlice.suggestWordResponse.suggest?.wordSuggester[text.trim()]?.suggestions);
   const fragmentSuggestions = useSelector((state) => state.vtvNewsSlice.suggestFragmentResponse.suggest?.fragmentSuggester[text.trim()]?.suggestions);
@@ -122,6 +123,7 @@ export default function SearchBar(props) {
     const newText = wordsOfText.join(" ");
     setText(newText);
     setAnchorEl(null);
+    inputRef.current.focus();
   }
   function replaceBySugesstionCorrectSpell(misspellingsAndCorrections) {
     let _text = text;
@@ -132,13 +134,14 @@ export default function SearchBar(props) {
     });
     setText(_text);
     setAnchorEl(null);
+    inputRef.current.focus();
   }
 
   return (
     <div>
       <Box className={cls.root}>
         <Typography variant="button">Từ khóa:</Typography>
-        <TextField className={cls.grow} fullWidth value={text} onChange={hdTextChange}></TextField>
+        <TextField inputRef={inputRef} className={cls.grow} fullWidth value={text} onChange={hdTextChange}></TextField>
         <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
           <Popper open={Boolean(anchorEl)} anchorEl={anchorEl} placement={"bottom"}>
             <Paper style={{ width: "1000px", minHeight: "200px" }}>
