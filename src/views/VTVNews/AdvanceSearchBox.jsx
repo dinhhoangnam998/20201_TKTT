@@ -49,7 +49,7 @@ export default function AdvanceSearchBox(props) {
     "Công nghệ",
     "Giáo dục",
   ];
-  const [careCategories, setCareCategories] = useState([]);
+  const [careCategories, setCareCategories] = useState(["Giáo Dục"]);
   const [notCareCategories, setNotCareCategories] = useState([]);
   const [careCategorysOptions, setCareCategoryOptions] = useState(categories);
   const [notCareCategoryOptions, setNotCareCategoryOptions] = useState(categories);
@@ -281,6 +281,7 @@ export default function AdvanceSearchBox(props) {
                   fullWidth
                   InputLabelProps={{ shrink: true }}
                   value={titleAND}
+                  placeholder="Bách Khoa, Hà Nội"
                   onChange={(e) => setTitleAND(e.target.value)}
                 ></TextField>
               </Grid>
@@ -299,6 +300,7 @@ export default function AdvanceSearchBox(props) {
                   fullWidth
                   InputLabelProps={{ shrink: true }}
                   value={titleOR}
+                  placeholder="học bổng"
                   onChange={(e) => setTitleOR(e.target.value)}
                 ></TextField>
               </Grid>
@@ -323,6 +325,7 @@ export default function AdvanceSearchBox(props) {
                   fullWidth
                   InputLabelProps={{ shrink: true }}
                   value={contentNOT}
+                  placeholder="trượt môn, thi lại"
                   onChange={(e) => setContentNOT(e.target.value)}
                 ></TextField>
               </Grid>
