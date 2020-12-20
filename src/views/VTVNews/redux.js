@@ -46,16 +46,125 @@ const responseSchema = {
   },
 };
 
+const suggestionResponseTemplate = {
+  responseHeader: {
+    status: 0,
+    QTime: 4,
+  },
+  suggest: {
+    fragmentSuggester: {
+      "": {
+        numFound: 5,
+        suggestions: [
+          {
+            term: "",
+            weight: 1607153700,
+            payload: "",
+          },
+        ],
+      },
+    },
+    wordSuggester: {
+      "": {
+        numFound: 10,
+        suggestions: [
+          {
+            term: "",
+            weight: 5240552293667486720,
+            payload: "",
+          },
+        ],
+      },
+    },
+  },
+};
+
+const spellingResponseTemplate = {
+  responseHeader: {
+    status: 0,
+    QTime: 19,
+  },
+  response: {
+    numFound: 0,
+    start: 0,
+    numFoundExact: true,
+    docs: [],
+  },
+  spellcheck: {
+    suggestions: [
+      "nguyêm",
+      {
+        numFound: 6,
+        startOffset: 0,
+        endOffset: 6,
+        origFreq: 0,
+        suggestion: [],
+      },
+      "nhâm",
+      {
+        numFound: 5,
+        startOffset: 7,
+        endOffset: 11,
+        origFreq: 7,
+        suggestion: [],
+      },
+      "nhâm",
+      {
+        numFound: 5,
+        startOffset: 19,
+        endOffset: 23,
+        origFreq: 7,
+        suggestion: [
+          {
+            word: "nhân",
+            freq: 2357,
+          },
+        ],
+      },
+    ],
+    correctlySpelled: false,
+    collations: [
+      "collation",
+      {
+        collationQuery: "",
+        hits: 1,
+      },
+    ],
+  },
+};
+
 const vtvNewsSlice = createSlice({
   name: "vtvNewsSlice",
-  initialState: { response: {}, showResultSummary: false },
+  initialState: {
+    response: {},
+    showResultSummary: false,
+    suggestWordResponse: suggestionResponseTemplate,
+    suggestFragmentResponse: suggestionResponseTemplate,
+    correctSpellingResponse: spellingResponseTemplate,
+    correctSpellingSuggestions: [],
+  },
   reducers: {
     setResponse: (state, action) => {
       state.response = action.payload;
       state.showResultSummary = true;
     },
+    setSuggestWord: (state, action) => {
+      state.suggestWordResponse = action.payload;
+    },
+
+    setSuggestFragment: (state, action) => {
+      state.suggestFragmentResponse = action.payload;
+    },
+    setCorrectSpelling: (state, action) => {
+      const response = action.payload;
+      const collations = response.spellcheck.collations;
+      const suggestions = collations.filter((item, index) => index % 2 === 1).sort((a, b) => b.hits - a.hits);
+
+      state.correctSpellingResponse = action.payload;
+      state.correctSpellingSuggestions = suggestions;
+    },
   },
 });
 
 export default vtvNewsSlice.reducer;
-export const { setResponse } = vtvNewsSlice.actions;
+export const { setResponse, setSuggestWord, setSuggestFragment, setCorrectSpelling } = vtvNewsSlice.actions;
