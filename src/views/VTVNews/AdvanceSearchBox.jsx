@@ -75,7 +75,8 @@ export default function AdvanceSearchBox(props) {
     if (notCareCategories.length !== 0) {
       notCareCategoryQuery = notCareCategories.map((category) => `-"${category}"`).join(" ");
     }
-    const categoryCondition = `category:(${careCategoryQuery} ${notCareCategoryQuery})`;
+    // special case: in solr, NOT -> AND NOT -> when just have 1 term -> must add *:*, so we add *:* here for safe
+    const categoryCondition = `category:(*:* AND ${careCategoryQuery} ${notCareCategoryQuery})`;
     // console.log(categoryCondition);
     return categoryCondition;
   }
@@ -116,7 +117,7 @@ export default function AdvanceSearchBox(props) {
         .join(" ");
     }
 
-    const titleCondition = `title:(${andPart} ${notPart} ${orPart})`;
+    const titleCondition = `title:(*:* AND ${andPart} ${notPart} ${orPart})`;
     // console.log(titleCondition);
     return titleCondition;
   }
@@ -148,7 +149,7 @@ export default function AdvanceSearchBox(props) {
         .join(" ");
     }
 
-    const contentCondition = `paragraphs:(${andPart} ${notPart} ${orPart})`;
+    const contentCondition = `paragraphs:(*:* AND ${andPart} ${notPart} ${orPart})`;
     // console.log(contentCondition);
     return contentCondition;
   }
