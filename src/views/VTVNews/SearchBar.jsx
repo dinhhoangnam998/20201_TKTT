@@ -123,7 +123,16 @@ export default function SearchBar(props) {
     setText(newText);
     setAnchorEl(null);
   }
-  function replaceBySugesstionCorrectSpell(CorrectSpellWord) {}
+  function replaceBySugesstionCorrectSpell(misspellingsAndCorrections) {
+    let _text = text;
+    const misspell = misspellingsAndCorrections.filter((item, index) => index % 2 === 0);
+    const corrections = misspellingsAndCorrections.filter((item, index) => index % 2 === 1);
+    misspell.forEach((item, index) => {
+      _text = _text.replace(item, corrections[index]);
+    });
+    setText(_text);
+    setAnchorEl(null);
+  }
 
   return (
     <div>
@@ -151,7 +160,7 @@ export default function SearchBar(props) {
                   </ListItem>
                 )}
                 {correctSpellingSuggestions.length >= 1 && (
-                  <ListItem button onClick={(e) => replaceBySugesstionCorrectSpell(correctSpellingSuggestions[0].collationQuery)}>
+                  <ListItem button onClick={(e) => replaceBySugesstionCorrectSpell(correctSpellingSuggestions[0].misspellingsAndCorrections)}>
                     <ListItemIcon>
                       <SearchIcon></SearchIcon>
                     </ListItemIcon>
@@ -159,7 +168,7 @@ export default function SearchBar(props) {
                   </ListItem>
                 )}
                 {correctSpellingSuggestions.length >= 2 && (
-                  <ListItem button onClick={(e) => replaceBySugesstionCorrectSpell(correctSpellingSuggestions[1].collationQuery)}>
+                  <ListItem button onClick={(e) => replaceBySugesstionCorrectSpell(correctSpellingSuggestions[1].misspellingsAndCorrections)}>
                     <ListItemIcon>
                       <SearchIcon></SearchIcon>
                     </ListItemIcon>
