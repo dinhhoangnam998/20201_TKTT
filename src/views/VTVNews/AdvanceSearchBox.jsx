@@ -54,7 +54,7 @@ export default function AdvanceSearchBox(props) {
   const [careCategorysOptions, setCareCategoryOptions] = useState(categories);
   const [notCareCategoryOptions, setNotCareCategoryOptions] = useState(categories);
 
-  const [startTime, setStartTime] = useState(new Date());
+  const [startTime, setStartTime] = useState(new Date(2020, 0, 1));
   const [endTime, setEndTime] = useState(new Date());
 
   const [titleAND, setTitleAND] = useState("");
