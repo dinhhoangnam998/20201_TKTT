@@ -26,16 +26,16 @@ export default function ResultItem({ doc, index }) {
     <div>
       <Paper className={cls.root}>
         <Box p={2}>
-          <Link underline="none" target="_blank">
+          <Link underline="none" target="_blank" href={doc.original_link}>
             <Typography variant="caption">
               {/* <Link href={doc.original_link} target="_blank" underline="none"> */}
               {doc.original_link}
               {/* </Link> */}
             </Typography>
             <Typography variant="h3">
-              {/* <Link href={doc.original_link} target="_blank"> */}
-              {doc.title}
-              {/* </Link> */}
+              <Link href={doc.original_link} target="_blank">
+                {doc.title}
+              </Link>
             </Typography>
           </Link>
           <Typography variant="body2" gutterBottom>{`${doc.category}, ${doc.author}, ${doc.publish_date.slice(0, -5)}`}</Typography>
