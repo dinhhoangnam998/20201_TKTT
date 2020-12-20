@@ -26,10 +26,10 @@ const useStyles = makeStyles(() =>
         height: "100%",
         width: "100%",
       },
-      em: {
-        fontWeight: "bolder",
-        backgroundColor: "yellow",
-      },
+      // em: {
+      //   fontWeight: "bolder",
+      //   backgroundColor: "yellow",
+      // },
       ".hieghtlightFragment": {
         backgroundColor: "#e0e0e0",
       },

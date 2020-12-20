@@ -20,8 +20,14 @@ const responseSchema = {
     numFoundExact: true,
     docs: [
       {
+        id: "",
+        original_link: "",
         category: "Văn hóa - Giải trí",
         title: "Nghệ sĩ Chí Tài qua đời, Trịnh Thăng Bình dời lịch ra MV",
+        author: "",
+        publish_date: "",
+        subtitle: "",
+        paragraphs: [],
       },
       {
         category: "Thế giới",

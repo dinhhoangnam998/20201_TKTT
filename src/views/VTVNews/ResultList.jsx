@@ -7,19 +7,16 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(2, 0),
     },
-    "& .MuiTypography-gutterBottom": {
-      marginBottom: 0,
-    },
   },
 }));
 
 export default function ResultList(props) {
   const cls = useStyles();
-  const results = useSelector((state) => state.vtvNewsSlice.results);
+  const docs = useSelector((state) => state.vtvNewsSlice.response.response.docs);
   return (
     <div className={cls.root}>
-      {results.map((result, index) => (
-        <ResultItem key={index} result={result} index={index + 1}></ResultItem>
+      {docs.map((doc, index) => (
+        <ResultItem key={index} doc={doc} index={index + 1}></ResultItem>
       ))}
     </div>
   );

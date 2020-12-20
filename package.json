@@ -1,12 +1,15 @@
 {
-  "name": "web_frontend_ministry",
+  "name": "web_info_retrival",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/pickers": "^3.2.10",
     "@reduxjs/toolkit": "^1.4.0",
+    "date-fns": "^2.16.1",
     "clsx": "^1.1.1",
     "history": "^5.0.0",
     "moment": "^2.29.1",

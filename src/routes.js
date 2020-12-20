@@ -7,11 +7,11 @@ import VTVNews from "./views/VTVNews";
 
 const routes = [
   {
-    path: "20201-tktk",
+    path: "20201-tktt",
     element: <DashboardLayout />,
     children: [
-      { path: "/vtv-news", element: <VTVNews /> },
-      { path: "*", element: <Navigate to="/404" /> },
+      { path: "vtv-news", element: <VTVNews /> },
+      { path: "*", element: <Navigate to="/404" replace={true} /> },
     ],
   },
   {
@@ -19,8 +19,8 @@ const routes = [
     element: <MainLayout />,
     children: [
       { path: "404", element: <NotFoundView /> },
-      { path: "/", element: <Navigate to="/20201-tktk/vtv-news" /> },
-      { path: "*", element: <Navigate to="/404" /> },
+      { path: "/", element: <Navigate to="/20201-tktt/vtv-news" /> },
+      { path: "*", element: <Navigate to="/404" replace={true} /> },
     ],
   },
 ];
