@@ -4,13 +4,14 @@ import DashboardLayout from "src/layouts/DashboardLayout";
 import MainLayout from "src/layouts/MainLayout";
 import NotFoundView from "src/utils/NotFoundView";
 import VTVNews from "./views/VTVNews";
-
+import MoreLikeThis from "./views/MoreLikeThis";
 const routes = [
   {
     path: "20201-tktt",
     element: <DashboardLayout />,
     children: [
       { path: "vtv-news", element: <VTVNews /> },
+      { path: "more-like-this", element: <MoreLikeThis /> },
       { path: "*", element: <Navigate to="/404" replace={true} /> },
     ],
   },

@@ -133,6 +133,54 @@ const spellingResponseTemplate = {
   },
 };
 
+const mltResponseTeamplate = {
+  responseHeader: {
+    status: 0,
+    QTime: 1,
+  },
+  match: {
+    numFound: 1,
+    start: 0,
+    numFoundExact: true,
+    docs: [
+      {
+        id: "https://vtv.vn/van-hoa-giai-tri/nghe-sieu-kho-bat-ngo-cong-pha-phong-ve-viet-dip-cuoi-nam-20201202144733442.htm",
+        original_link: "https://vtv.vn/van-hoa-giai-tri/nghe-sieu-kho-bat-ngo-cong-pha-phong-ve-viet-dip-cuoi-nam-20201202144733442.htm",
+        category: "Văn hóa - Giải trí",
+        title: '"Nghề siêu khó" bất ngờ công phá phòng vé Việt dịp cuối năm',
+        author: "PV",
+        publish_date: "Thứ tư, ngày 02/12/2020 14:57 GMT+7",
+        timestamp: 1606921020000,
+        subtitle: "VTV.vn - Bộ phim Nghề siêu khó của Hàn Quốc sẽ chính thức công chiếu tại Việt Nam từ ngày 11/12.",
+        paragraphs: ["Nghề siêu khó"],
+        imgSrcs: ["https://vtv1.mediacdn.vn/2020/12/2/photo-1-1606894020983983589872.jpg"],
+        _version_: 1686526631264387072,
+      },
+    ],
+  },
+  response: {
+    numFound: 848,
+    start: 0,
+    numFoundExact: true,
+    docs: [
+      {
+        id: "",
+        original_link: "",
+        category: "",
+        title: "",
+        author: "",
+        publish_date: "Thứ bảy, ngày 07/11/2020 06:00 GMT+7",
+        timestamp: 1604728800000,
+        subtitle:
+          'VTV.vn - Do công chiếu phim trong thời điểm dịch COVID-19 bùng phát, siêu phẩm "Tenet" đã không thể đạt được mức doanh thu như kì vọng ban đầu.',
+        paragraphs: ["Theo thống kê của Box Office Mojo, cho đến thời điểm hiện tại, bộ phim điện"],
+        imgSrcs: ["https://vtv1.mediacdn.vn/thumb_w/640/2020/11/6/21tenet1-mobilemasterat3x-v2-1604642496823988007549.jpg"],
+        _version_: 1686526631970078720,
+      },
+    ],
+  },
+};
+
 const vtvNewsSlice = createSlice({
   name: "vtvNewsSlice",
   initialState: {
@@ -142,6 +190,13 @@ const vtvNewsSlice = createSlice({
     suggestFragmentResponse: suggestionResponseTemplate,
     correctSpellingResponse: spellingResponseTemplate,
     correctSpellingSuggestions: [],
+    moreLikeThisResponse: {
+      response: { numFound: 0, docs: [] },
+      responseHeader: {
+        status: 0,
+        QTime: 1,
+      },
+    },
   },
   reducers: {
     setResponse: (state, action) => {
@@ -163,8 +218,11 @@ const vtvNewsSlice = createSlice({
       state.correctSpellingResponse = action.payload;
       state.correctSpellingSuggestions = suggestions;
     },
+    setMoreLikeThisResponse: (state, action) => {
+      state.moreLikeThisResponse = action.payload;
+    },
   },
 });
 
 export default vtvNewsSlice.reducer;
-export const { setResponse, setSuggestWord, setSuggestFragment, setCorrectSpelling } = vtvNewsSlice.actions;
+export const { setResponse, setSuggestWord, setSuggestFragment, setCorrectSpelling, setMoreLikeThisResponse } = vtvNewsSlice.actions;
