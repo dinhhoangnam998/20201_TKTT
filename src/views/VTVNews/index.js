@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import View from "../../utils/View";
 import AdvanceSearchBox from "./AdvanceSearchBox";
 import ResultList from "./ResultList";
+import ResultPagination from "./ResultPagination";
 import SearchBar from "./SearchBar";
 import SearchResultSummary from "./SearchResultSummary";
 
@@ -15,6 +16,7 @@ export default function SearchInfo(props) {
         <AdvanceSearchBox></AdvanceSearchBox>
         {show && <SearchResultSummary></SearchResultSummary>}
         {show && <ResultList></ResultList>}
+        {show && <ResultPagination></ResultPagination>}
       </View>
     </div>
   );

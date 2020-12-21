@@ -7,8 +7,8 @@ import NavItem from "./NavItem";
 
 const user = {
   avatar: "",
-  jobTitle: null,
-  name: "TKTK",
+  jobTitle: "Đoàn, Huyền, Nam",
+  name: "Tìm kiếm thông tin",
 };
 
 const items = [
@@ -17,11 +17,11 @@ const items = [
     icon: SearchIcon,
     title: "Tin tức tổng hợp",
   },
-  {
-    href: "/20201-tktt/covid-news",
-    icon: SearchIcon,
-    title: "Tin tức Covid",
-  },
+  // {
+  //   href: "/20201-tktt/covid-news",
+  //   icon: SearchIcon,
+  //   title: "Tin tức Covid",
+  // },
 ];
 
 const useStyles = makeStyles(() => ({

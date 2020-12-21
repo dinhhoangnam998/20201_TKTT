@@ -191,7 +191,7 @@ const vtvNewsSlice = createSlice({
     correctSpellingResponse: spellingResponseTemplate,
     correctSpellingSuggestions: [],
     moreLikeThisResponse: {
-      response: { numFound: 0, docs: [] },
+      response: { numFound: 0, docs: [], match: { docs: [] } },
       responseHeader: {
         status: 0,
         QTime: 1,

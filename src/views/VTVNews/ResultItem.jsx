@@ -28,7 +28,7 @@ export default function ResultItem({ doc, index }) {
 
   async function hdMoreLikeThis(e, id) {
     e.preventDefault();
-    const res = await fetch(`http://localhost:8983/solr/vtv_news/mlt?q=id:"${id}"&&rows=30`);
+    const res = await fetch(`http://localhost:8983/solr/vtv_news/mlt?q=id:"${id}"`);
     if (!res.ok) {
       alert("Something went wrong, can not load more like this,...");
       console.log(await res.json());

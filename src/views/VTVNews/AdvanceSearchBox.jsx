@@ -177,7 +177,7 @@ export default function AdvanceSearchBox(props) {
   async function hdClickAdvanceSearch() {
     const q = buildQuery();
     const hlOptions = `hl=true&hl.fl=paragraphs&hl.preserveMulti=true&hl.maxMultiValuedToMatch=5&hl.simple.pre=<strong>&hl.simple.post=</strong>&hl.mergeContiguous=true`;
-    const queryString = `q=${q}&${hlOptions}&rows=30`;
+    const queryString = `q=${q}&${hlOptions}`;
     // const queryString = `q=${q}`;
     const res = await fetch(`http://localhost:8983/solr/vtv_news/select?${queryString}`);
     const body = await res.json();
