@@ -9,6 +9,7 @@ import vi from "date-fns/locale/vi";
 import DateFnsUtils from "@date-io/date-fns";
 import { useDispatch } from "react-redux";
 import { setResponse } from "./redux";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   marginBottomChild: {
@@ -20,6 +21,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#4dabf5",
+      main: "#2196f3",
+      dark: "#1769aa",
+      contrastText: "#fff",
+    },
+  },
+});
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -49,8 +61,8 @@ export default function AdvanceSearchBox(props) {
     "Công nghệ",
     "Giáo dục",
   ];
-  const [careCategories, setCareCategories] = useState(["Giáo Dục"]);
-  const [notCareCategories, setNotCareCategories] = useState([]);
+  const [careCategories, setCareCategories] = useState(["Giáo dục", "Công nghệ"]);
+  const [notCareCategories, setNotCareCategories] = useState(["Truyền hình", "Văn hóa - Giải trí"]);
   const [careCategorysOptions, setCareCategoryOptions] = useState(categories);
   const [notCareCategoryOptions, setNotCareCategoryOptions] = useState(categories);
 
@@ -207,18 +219,21 @@ export default function AdvanceSearchBox(props) {
                 <Typography>Chủ đề:</Typography>
               </Grid>
               <Grid item md>
+                {/* <ThemeProvider theme={theme}> */}
                 <Autocomplete
                   multiple
                   disableCloseOnSelect
                   options={careCategorysOptions}
                   renderOption={renderOption}
                   renderInput={(params) => <TextField {...params} label="Quan tâm" InputLabelProps={{ shrink: true }} />}
+                  ChipProps={{ color: "primary" }}
                   value={careCategories}
                   onChange={(e, values) => {
                     setCareCategories(values);
                     setNotCareCategoryOptions(categories.filter((item) => !values.includes(item)));
                   }}
                 ></Autocomplete>
+                {/* </ThemeProvider> */}
               </Grid>
               <Grid item md>
                 <Autocomplete
