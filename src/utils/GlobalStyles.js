@@ -13,6 +13,7 @@ const useStyles = makeStyles(() =>
         "-moz-osx-font-smoothing": "grayscale",
         height: "100%",
         width: "100%",
+        " scroll-behavior": "smooth",
       },
       body: {
         backgroundColor: "#f4f6f8",

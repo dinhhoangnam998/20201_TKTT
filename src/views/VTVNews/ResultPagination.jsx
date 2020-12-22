@@ -7,7 +7,10 @@ import { setResponse } from "./redux";
 
 export default function ResultPagination(props) {
   const numFound = useSelector((state) => state.vtvNewsSlice.response.response.numFound);
-  const totalPage = Math.floor(numFound / 10) + 1;
+  let totalPage = Math.trunc(numFound / 10);
+  if (Math.trunc(numFound % 10) > 0) {
+    totalPage += 1;
+  }
   const [page, setPage] = useState(1);
   const q = useSelector((state) => state.vtvNewsSlice.response.responseHeader.params.q);
   const dp = useDispatch();
